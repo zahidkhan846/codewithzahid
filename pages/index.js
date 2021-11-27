@@ -6,8 +6,6 @@ import Meta from "../components/Meta/Meta";
 import { contentful } from "../utils/contentful";
 
 function HomePage({ featured }) {
-  console.log(featured);
-
   return (
     <Fragment>
       <Meta

@@ -117,6 +117,12 @@ export const getStaticProps = async (context) => {
     "fields.slug": params.slug,
   });
 
+  if (!items.length) {
+    return {
+      redirect: { destination: "/", permanent: false },
+    };
+  }
+
   return {
     props: { project: items[0] },
     revalidate: 1,
