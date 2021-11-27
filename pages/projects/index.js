@@ -23,6 +23,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       allProjects: res.items,
+      revalidate: 1,
     },
   };
 };
