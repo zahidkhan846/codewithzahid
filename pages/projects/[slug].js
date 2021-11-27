@@ -7,8 +7,11 @@ import Meta from "../../components/Meta/Meta";
 import { contentful } from "../../utils/contentful";
 import { AiFillGithub } from "react-icons/ai";
 import { CgWebsite } from "react-icons/cg";
+import Skeleton from "../../components/UI/Skeleton/Skeleton";
 
 function ProjectDetail({ project }) {
+  if (!project) return <Skeleton />;
+
   const {
     title,
     description,
@@ -102,7 +105,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
