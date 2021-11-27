@@ -112,3 +112,11 @@
     width: 400px;
   }
 }
+
+.disabled {
+  color: lightgray;
+}
+
+.disabled:hover {
+  color: lightgray;
+}

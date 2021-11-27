@@ -14,7 +14,7 @@ function Header() {
           <Link href="/">
             <a className={styles.navLink}>
               <span className={`${styles.linkText} ${styles.logoText}`}>
-                Code Zake
+                Code with Zahid
               </span>
               <FaAngleDoubleRight className={styles.navIcon} />
             </a>

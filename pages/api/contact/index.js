@@ -1,4 +1,4 @@
-import { dbConnect } from "../../../utils/db";
+import sgMail from "@sendgrid/mail";
 
 export default async (req, res) => {
   if (req.method === "POST") {
@@ -24,33 +24,23 @@ export default async (req, res) => {
       message: message,
     };
 
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    const msg = {
+      to: "zahid.khankz846@gmail.com",
+      from: email,
+      subject: `${message.substr(0, 10)} by ${name}`,
+      name,
+      text: message,
+    };
     try {
-      const client = await dbConnect();
-      const db = client.db();
-      await db.collection("messages").insertOne(newMessage);
-      client.close();
-      return res.status(201).json({
-        message: "Successfully Sent.",
-        data: newMessage,
-      });
+      await sgMail.send(msg);
+      console.log("Email sent");
+      return res.status(200).json({ messgae: "Successfully Sent!" });
     } catch (error) {
-      return res.status(500).json({ error: "Something went wrong!" });
+      console.error(error);
+      return res
+        .status(400)
+        .json({ errors: { message: "Something went wrong!" } });
     }
   }
-
-  if (req.method == "GET") {
-    try {
-      const client = await dbConnect();
-      const collection = client.db().collection("messages");
-
-      const messages = await collection.find().toArray();
-      console.log(messages);
-      if (!messages) return;
-      res.status(200).json({ messages: messages });
-      return;
-    } catch (error) {
-      return res.status(500).json({ error: "Something went wrong!" });
-    }
-  }
-  return res.status(200).json({ message: "Hello! welcome to code Zake." });
 };

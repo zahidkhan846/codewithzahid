@@ -8,9 +8,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.6.0",
+    "axios": "^0.24.0",
     "contentful": "^8.2.1",
     "moment": "^2.29.1",
-    "mongodb": "^3.6.9",
     "next": "10.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",

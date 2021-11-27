@@ -1,28 +1,46 @@
 import { useState } from "react";
 import styles from "./Form.module.css";
+import { useRouter } from "next/router";
+import axios from "axios";
+import Alert from "../Alert/Alert";
 
 function Form() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [errors, setErrors] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("/api/contact/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, name, message }),
-      });
-      const data = await res.json();
-      console.log(data);
+      setErrors(null);
+      setLoading(true);
+      const res = await axios.post("/api/contact/", { email, name, message });
+      if (res.status === 200) {
+        setName("");
+        setEmail("");
+        setMessage("");
+        router.push("/");
+      }
+      setLoading(false);
     } catch (error) {
-      console.error(error.response.data);
+      setErrors(error.response.data.errors);
+      setLoading(false);
     }
+  };
+
+  const handleRemoveErros = () => {
+    setErrors(null);
   };
 
   return (
     <section className={styles.formContainer}>
+      {errors && (
+        <Alert errors={errors} handleRemoveErros={handleRemoveErros} />
+      )}
       <div className={styles.heading}>
         <h1 className="text-center">Contact Me</h1>
         <div className="underline"></div>
@@ -62,8 +80,16 @@ function Form() {
             ></textarea>
           </div>
           <div className={styles.btn}>
-            <button type="submit" className={styles.submitButton}>
-              Send Message
+            <button
+              disabled={loading}
+              type="submit"
+              className={
+                loading
+                  ? `${styles.submitButton} ${styles.disabled}`
+                  : styles.submitButton
+              }
+            >
+              {loading ? "Sending..." : "Send Message"}
             </button>
           </div>
         </form>
