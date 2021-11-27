@@ -1,11 +1,7 @@
 import Card from "../UI/Cards/Card-Dark/Card";
 import styles from "./Featured.module.css";
 
-function Featured({ allProjects }) {
-  const featuredProjects = allProjects.filter(
-    (project) => project.fields.isFeatured
-  );
-
+function Featured({ featured }) {
   return (
     <div className={styles.featuredContainer}>
       <div className={styles.header}>
@@ -13,7 +9,7 @@ function Featured({ allProjects }) {
         <div className="underline bg-white"></div>
       </div>
       <section className="card-list">
-        {featuredProjects.map((project) => (
+        {featured.map((project) => (
           <Card key={project.fields.id} project={project} />
         ))}
       </section>

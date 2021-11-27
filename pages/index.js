@@ -5,7 +5,9 @@ import Featured from "../components/Projects/Featured";
 import Meta from "../components/Meta/Meta";
 import { contentful } from "../utils/contentful";
 
-function HomePage({ allProjects }) {
+function HomePage({ featured }) {
+  console.log(featured);
+
   return (
     <Fragment>
       <Meta
@@ -14,7 +16,7 @@ function HomePage({ allProjects }) {
       />
       <Hero />
       <Specialize />
-      <Featured allProjects={allProjects} />
+      <Featured featured={featured} />
     </Fragment>
   );
 }
@@ -25,7 +27,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      allProjects: res.items,
+      featured: res.items.filter((project) => project.fields.isFeatured),
       revalidate: 1,
     },
   };
