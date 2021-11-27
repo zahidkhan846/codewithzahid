@@ -116,7 +116,7 @@ export const getStaticProps = async (context) => {
 
   return {
     props: { project: items[0] },
-    ravalidate: 1,
+    revalidate: 1,
   };
 };
 
