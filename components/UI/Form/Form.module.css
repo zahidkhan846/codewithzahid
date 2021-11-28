@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   flex-direction: column;
 }
 
@@ -18,8 +17,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem 0;
-  padding-bottom: 3rem;
+  margin-bottom: 3rem;
 }
 
 .form h2 {
@@ -110,6 +108,13 @@
 @media (max-width: 568px) {
   .form form {
     width: 400px;
+  }
+}
+
+@media (max-width: 400px) {
+  .form form {
+    width: 280px;
+    padding: 1rem;
   }
 }
 

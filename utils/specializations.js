@@ -53,7 +53,7 @@ export const specializations = [
     title: "FRONT-END DEVELOPMENT",
     description:
       "I like to code things from scratch, and enjoy bringing ideas to life in the browser.",
-    spHead: "Languages I Know",
+    spHead: "Technologies I Know",
     specializationIcons: Object.values(frontIcons).map((icon) => icon),
   },
   {
@@ -62,7 +62,7 @@ export const specializations = [
     title: "Back-end Development",
     description:
       "I write web services and APIs. Which can be used by front-end web apps and mobile apps.",
-    spHead: "Languages I Know",
+    spHead: "Technologies I Know",
     specializationIcons: Object.values(backIcons).map((icon) => icon),
   },
   {

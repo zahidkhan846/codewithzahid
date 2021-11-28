@@ -7,7 +7,9 @@ function Hero() {
   return (
     <section className={styles.hero}>
       <article className={styles.content}>
-        <Image src="/assets/me.jpg" width={250} height={250} alt="Zahid" />
+        <div className={styles.imgContainer}>
+          <Image src="/assets/me.jpg" width={250} height={250} alt="Zahid" />
+        </div>
         <h1>Hi, I'm Zahid.</h1>
         <h3>I am a full-stack web developer.</h3>
         <p>

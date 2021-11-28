@@ -24,13 +24,19 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  padding: 0 2rem;
+  padding: 0 1rem;
   height: 100%;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .content img {
   border-radius: 50%;
+}
+
+@media (max-width: 500px) {
+  .imgContainer {
+    display: none;
+  }
 }
 
 .content h1 {

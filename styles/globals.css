@@ -83,8 +83,17 @@ ul {
   list-style: none;
   gap: 1.5rem;
   margin: 1rem 0;
+  padding: 0 1rem;
+
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+}
+
+@media (max-width: 350px) {
+  .social-links {
+    gap: 0.5rem;
+  }
 }
 
 .social-icon {
