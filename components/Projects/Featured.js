@@ -5,7 +5,7 @@ function Featured({ featured }) {
   return (
     <div className={styles.featuredContainer}>
       <div className={styles.header}>
-        <h1 className="text-center text-colorful font-2">Featured Projects</h1>
+        <h1 className="text-center text-colorful font-2">Featured Projects.</h1>
         <div className="underline bg-white"></div>
       </div>
       <section className="card-list">
